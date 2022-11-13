@@ -32,6 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Amz-fG-D7O">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5dq-B2-ive">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="detailsBarButton:" destination="BYZ-38-t0r" id="2Uw-YY-fBh"/>
                             </connections>
@@ -54,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ue-1F-V26">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="lotr" translatesAutoresizingMaskIntoConstraints="NO" id="6ue-1F-V26">
                                 <rect key="frame" x="0.0" y="91.000000000000028" width="390" height="361.66666666666674"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfl-Uy-a7F">
@@ -85,7 +86,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E1-jc-M9S">
                                 <rect key="frame" x="138" y="729.66666666666663" width="114" height="34.333333333333371"/>
-                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Kaydet" cornerStyle="large"/>
                                 <connections>
@@ -94,7 +95,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sHF-BF-Mnb"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AjR-1e-krI" firstAttribute="leading" secondItem="sHF-BF-Mnb" secondAttribute="leading" constant="16" id="1bM-CZ-JLb"/>
                             <constraint firstItem="AjR-1e-krI" firstAttribute="top" secondItem="wlw-Pe-yw9" secondAttribute="bottom" constant="8" symbolic="YES" id="3Ov-Ss-NmE"/>
@@ -150,6 +151,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="lotr" width="1200" height="1821"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
