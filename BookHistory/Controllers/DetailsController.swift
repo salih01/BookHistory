@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 extension DetailsController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let image = info[.originalImage]
-        bookImage.image = image as? UIImage
+        self.bookImage.image = info[.originalImage] as? UIImage
+        
         dismiss(animated: true)
 
         
@@ -32,12 +33,13 @@ class DetailsController: UIViewController {
     
     // MARK: - Properties
     
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+       
         gesture()
-
     }
     
     // MARK: - Functions
@@ -48,8 +50,12 @@ class DetailsController: UIViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(hideKeyboard))
         view.addGestureRecognizer(gestureRecognizer)
         
+       
+            
+        
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
-        view.addGestureRecognizer(imageTapGesture)
+        bookImage.addGestureRecognizer(imageTapGesture)
+        bookImage.isUserInteractionEnabled = true
        
     }
     
@@ -63,7 +69,7 @@ class DetailsController: UIViewController {
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = false
-        present(picker, animated: true)
+        self.present(picker, animated: true)
     }
     
 
@@ -71,6 +77,41 @@ class DetailsController: UIViewController {
     // MARK: - Actions
 
     @IBAction func kaydetButton(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let newBook = NSEntityDescription.insertNewObject(forEntityName: "Books", into: context)
+        
+        
+        if bookName.text != "" && bookPage.text != "" {
+            
+            if let bookSayfa = Int(bookPage.text!){
+                newBook.setValue(bookSayfa, forKey: "bookPage")
+
+            }
+          
+            newBook.setValue(bookName.text!, forKey: "bookName")
+            newBook.setValue(UUID(), forKey: "id")
+            let jpegImage = bookImage.image!.jpegData(compressionQuality: 0.8)
+            newBook.setValue(jpegImage, forKey: "image")
+            
+            do {
+                try context.save()
+            }  catch {
+                
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
+            
+            NotificationCenter.default.post(name: NSNotification.Name("newData"), object: nil)
+            self.navigationController?.popViewController(animated: true)
+        } else
+        {
+            print("hata")
+        }
+        
+       
         
     }
     
